@@ -1,0 +1,44 @@
+[
+    {
+        "name": "Claw Hammer",
+        "image": "https://i.ibb.co/mvKrt1K/Claw-Hammer.jpg",
+        "description": "a standard hammer on one side of the tool, primarily used for inserting fixtures like nails, and a dual steel claw at the other end, which is designed to enable the easy removal of the same nails or similar fixtures by applying a robust grip.",
+        "price": 12,
+        "available": 30000
+    },
+    {
+        "name": "Spanners",
+        "image": "https: //i.ibb.co/kxzwChR/Spanners.jpg",
+        "description": "Spanners will almost certainly be an essential inclusion in your tool kit if you regularly need to loosen or attach nuts, bolts or similar fixings.",
+        "price": 10,
+        "available": 30000
+    },
+    {
+        "name": "Cable cutters",
+        "image": "https://i.ibb.co/gTYwTZs/Cable-cutters.jpg",
+        "description": "Cable cutters are a staple of every electrician's tool kit. These versatile tools feature steel blades and cut through standard wiring easily. Stronger cable shears will make short work of even thicker cabling. They also provide a handy way to strip off insulation for crimping and similar operations quickly.",
+        "price": 11,
+        "available": 30000
+    },
+    {
+        "name": "Electrical tape",
+        "image": " https://i.ibb.co/XkK25MK/Electrical-tape.jpg",
+        "description": "Electrical tape is used to insulate wires or other items that conduct electricity. Also known as insulation tape or electrical insulation tape, it is self-adhesive and pressure-sensitive, built to resist abrasion, heat and liquids in order to protect the sensitive conducting core within electrical wiring.",
+        "price": 5,
+        "available": 50000
+    },
+    {
+        "name": "Hex keys",
+        "image": " https://i.ibb.co/TYF2Bxs/Hex-keys.jpg",
+        "description": "Hex keys take their name from the hexagonal fasteners and fixings they are used to adjust. Another common name is Allen key or Allen wrench. They can be made from steel, or nickel and sometimes bronze or copper alloys. There are four principal types: straight hex keys, L-shaped ones, folding hex keys and T-handles.",
+        "price": 6,
+        "available": 60000
+    },
+    {
+        "name": "Hacksaws",
+        "image": "https://i.ibb.co/85kvC2v/Hacksaws.jpg",
+        "description": "Hacksaws are fine-toothed saws designed primarily for cutting through metal. The thin blades are held at tension in an adjustable frame, between the head of the saw and the pistol grip handle. These blades can break or become blunt but are easily replaceable.",
+        "price": 13,
+        "available": 30000
+    }
+]
