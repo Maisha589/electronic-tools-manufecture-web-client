@@ -1,9 +1,11 @@
 import React from 'react';
+import { useSpring, animated } from 'react-spring'
 
 const Banner = () => {
+    const props = useSpring({ to: { opacity: 1 }, from: { opacity: 0 } })
     return (
         <div>
-            <h2>This is banner</h2>
+            <animated.div style={props}>This is banner.</animated.div>
         </div>
     );
 };
