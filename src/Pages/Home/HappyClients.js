@@ -6,7 +6,7 @@ const HappyClients = () => {
     const { number } = useSpring({
         reset: true,
         from: { number: 0 },
-        number: 3000,
+        number: 5000,
         delay: 400,
         config: config.molasses,
         onRest: () => set(!flip),
@@ -19,7 +19,7 @@ const HappyClients = () => {
                 </div>
                 <div className="stat-title text-3xl text-secondary">Happy Clients</div>
                 <animated.div className="stat-value text-secondary">{number.to(n => n.toFixed(0))}</animated.div>
-                <div className="stat-desc mt-2 text-xl font-semibold text-secondary">Successfully served our tools</div>
+                <div className="stat-desc mt-2 text-xl font-semibold text-secondary">Our Regular customer</div>
             </div >
         </div>
     );

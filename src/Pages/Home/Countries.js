@@ -15,7 +15,7 @@ const Countries = () => {
         <div className="stat stat-shadow">
             <div className="stat-title text-3xl text-primary">Countries</div>
             <animated.div className="stat-value text-primary">{number.to(n => n.toFixed(0))}</animated.div>
-            <div className="stat-desc mt-2 text-xl font-semibold text-primary">Successfully served our tools</div>
+            <div className="stat-desc mt-2 text-xl font-semibold text-primary">Use Our tools</div>
         </div >
     );
 };

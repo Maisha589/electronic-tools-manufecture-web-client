@@ -15,7 +15,7 @@ const ClientsReview = () => {
         <div className="stat">
             <div className="stat-title text-3xl text-accent">Client Reviews</div>
             <animated.div className="stat-value text-accent">{number.to(n => n.toFixed(0))}</animated.div>
-            <div className="stat-desc mt-2 text-xl font-semibold text-accent">Successfully served our tools</div>
+            <div className="stat-desc mt-2 text-xl font-semibold text-accent">Talked about us</div>
         </div >
     );
 };

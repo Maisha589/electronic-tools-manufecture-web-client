@@ -7,7 +7,7 @@ const SuppliedTools = () => {
         reset: true,
         from: { number: 0 },
         number: 160000,
-        delay: 300,
+        delay: 500,
         config: config.molasses,
         onRest: () => set(!flip),
     })
@@ -15,7 +15,7 @@ const SuppliedTools = () => {
         <div className="stat">
             <div className="stat-title text-3xl text-neutral">Tools Supplied</div>
             <animated.div className="stat-value text-neutral">{number.to(n => n.toFixed(0))}</animated.div>
-            <div className="stat-desc mt-2 text-xl font-semibold text-neutral">Successfully served our tools</div>
+            <div className="stat-desc mt-2 text-xl font-semibold text-neutral">Successfully delivered</div>
         </div >
     );
 };
