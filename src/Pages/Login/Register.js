@@ -1,26 +1,27 @@
 import React from 'react';
-import auth from "../../firebase.init";
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
-import { useForm } from "react-hook-form";
 
-const Login = () => {
+const Register = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const navigate = useNavigate();
     const { register, formState: { errors }, handleSubmit } = useForm();
-    // const onSubmit = data => console.log(data);
+
     const [
-        signInWithEmailAndPassword,
+        createUserWithEmailAndPassword,
         user,
         loading,
         error,
-    ] = useSignInWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth);
 
-    let loginError;
 
-    if (gError || error) {
-        loginError = <p className='text-red-500'><small>{error?.message || gError?.message}</small></p>
+    let signInError;
+
+    if (gError) {
+        signInError = <p className='text-red-500'><small>{error?.message || gError?.message}</small></p>
     }
 
     if (gLoading || loading) {
@@ -32,8 +33,10 @@ const Login = () => {
 
     }
 
-    const onSubmit = data => {
-        signInWithEmailAndPassword(data.email, data.password);
+    const onSubmit = (data) => {
+        createUserWithEmailAndPassword(data.email, data.password);
+        console.log('update done');
+        console.log(data)
     }
 
     const handleGoogleLogin = () => {
@@ -44,12 +47,35 @@ const Login = () => {
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
-                    <h1 className="text-5xl font-bold">Login now!</h1>
+                    <h1 className="text-5xl font-bold">Register Now</h1>
                     <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="card-body " >
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text text-primary font-semibold ">Name</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    placeholder="Your Name"
+                                    className="input input-bordered w-full max-w-xs"
+                                    {...register("name", {
+                                        required: {
+                                            value: true,
+                                            message: 'name is Required'
+                                        },
+                                        pattern: {
+                                            message: 'Provide a valid Name'
+                                        }
+                                    })}
+                                />
+                                <label className="label">
+                                    {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+                                    {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+                                </label>
+                            </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text text-primary font-semibold ">Email</span>
@@ -76,7 +102,7 @@ const Login = () => {
                             </div>
                             <div className="form-control w-full max-w-xs">
                                 <label className="label">
-                                    <span className="label-text">Password</span>
+                                    <span className="label-text text-primary font-semibold">Password</span>
                                 </label>
                                 <input
                                     type="password"
@@ -98,23 +124,24 @@ const Login = () => {
                                     {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                                 </label>
                             </div>
-                            {loginError}
                             <div className="form-control mt-6">
-                                <input className="btn btn-primary hover:btn-secondary" type="submit" value="Login" />
+                                <input className="btn btn-primary hover:btn-secondary" type="submit" value="Sign In" />
                             </div>
                             <label className="label text-neutral">
-                                <Link to='/register'>New user?</Link>
+                                <Link to='/login'>Already have an account?</Link>
                             </label>
-                            <div className="divider">OR</div>
-                            <div className="grid h-20 card rounded-box place-items-center">
-                                <button onClick={handleGoogleLogin} className="btn btn-primary hover:btn-secondary">Google Login</button>
-                            </div>
+
                         </div>
                     </form>
+                    <div className="divider">OR</div>
+                    {signInError}
+                    <div className="grid h-20 card rounded-box place-items-center">
+                        <button onClick={handleGoogleLogin} className="btn btn-primary hover:btn-secondary">Google Login</button>
+                    </div>
                 </div>
             </div>
         </div>
     );
 };
 
-export default Login;
+export default Register;
