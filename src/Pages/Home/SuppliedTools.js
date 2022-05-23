@@ -7,7 +7,7 @@ const SuppliedTools = () => {
         reset: true,
         from: { number: 0 },
         number: 160000,
-        delay: 500,
+        delay: 1000,
         config: config.molasses,
         onRest: () => set(!flip),
     })

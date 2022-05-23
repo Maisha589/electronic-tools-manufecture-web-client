@@ -6,14 +6,16 @@ const Tools = () => {
 
 
     useEffect(() => {
-        const url = "tools.json";
-        fetch(url)
+        const url = "http://localhost:5000/tools";
+        fetch(url, {
+            method: "GET"
+        })
             .then(res => res.json())
             .then(data => setTools(data))
     }, [])
 
     return (
-        <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-3'>
+        <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-3 p-5'>
             {
                 tools.map(tool => <Tool
                     tool={tool}

@@ -7,7 +7,7 @@ const Countries = () => {
         reset: true,
         from: { number: 0 },
         number: 15,
-        delay: 300,
+        delay: 500,
         config: config.molasses,
         onRest: () => set(!flip),
     })

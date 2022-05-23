@@ -7,7 +7,7 @@ const HappyClients = () => {
         reset: true,
         from: { number: 0 },
         number: 5000,
-        delay: 400,
+        delay: 500,
         config: config.molasses,
         onRest: () => set(!flip),
     })

@@ -7,7 +7,7 @@ const ClientsReview = () => {
         reset: true,
         from: { number: 0 },
         number: 4000,
-        delay: 400,
+        delay: 800,
         config: config.molasses,
         onRest: () => set(!flip),
     })
