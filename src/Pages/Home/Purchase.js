@@ -17,7 +17,7 @@ const Purchase = () => {
     if (isLoading) {
         return <Loading></Loading>
     }
-    const { name, image, description, price, available, minimumOrder } = tool;
+    const { _id, name, image, description, price, available, minimumOrder } = tool;
 
 
     const handleBooking = event => {
@@ -25,17 +25,16 @@ const Purchase = () => {
         const quantity = event.target.quantity.value;
 
         const booking = {
-            client: user.displayName,
+            toolKey: _id,
+            client: event.target.name.value,
             clientEmail: user.email,
             toolsName: name,
             orderQuantity: quantity,
-            available: (available - quantity),
             toolsPrice: price,
             TotalPrice: (price * quantity),
             phone: event.target.phone.value,
             address: event.target.address.value
         }
-        console.log(booking);
 
 
         fetch("http://localhost:5000/booking", {
@@ -62,10 +61,11 @@ const Purchase = () => {
                 <p className='font-semibold text-primary'>Available Tools: <span className='font-bolder'>{available}</span></p>
 
                 <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3 justify-center'>
+                    <input type="text" name='name' placeholder="your Name" className="input input-bordered input-primary w-full max-w-xs" required />
                     <input type="email" value={user?.email} className="input input-bordered input-primary w-full max-w-xs" readOnly disabled />
                     <input type="number" name='phone' placeholder="Your phone" className="input input-bordered input-primary w-full max-w-xs" required />
                     <input type="text" name='address' placeholder="your address" className="input input-bordered input-primary w-full max-w-xs" required />
-                    <select name='quantity' class="select select-secondary w-full max-w-xs">
+                    <select name='quantity' className="select select-secondary w-full max-w-xs">
                         {
                             minimumOrder.map(quantity => <option value={quantity}>{quantity}</option>)
                         }

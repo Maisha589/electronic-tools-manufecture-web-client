@@ -20,7 +20,7 @@ const Register = () => {
 
     let signInError;
 
-    if (gError) {
+    if (gError || error) {
         signInError = <p className='text-red-500'><small>{error?.message || gError?.message}</small></p>
     }
 
@@ -34,7 +34,7 @@ const Register = () => {
     }
 
     const onSubmit = (data) => {
-        createUserWithEmailAndPassword(data.email, data.password);
+        createUserWithEmailAndPassword(data.email, data.password, data.displayName);
         console.log('update done');
         console.log(data)
     }
@@ -61,7 +61,7 @@ const Register = () => {
                                     type="text"
                                     placeholder="Your Name"
                                     className="input input-bordered w-full max-w-xs"
-                                    {...register("name", {
+                                    {...register("displayName", {
                                         required: {
                                             value: true,
                                             message: 'name is Required'
@@ -73,7 +73,7 @@ const Register = () => {
                                 />
                                 <label className="label">
                                     {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
-                                    {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+                                    {errors.name?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
                                 </label>
                             </div>
                             <div className="form-control">
