@@ -24,6 +24,7 @@ const AllUsers = () => {
                         <th>User Name</th>
                         <th>Role</th>
                         <th>Manage button</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>

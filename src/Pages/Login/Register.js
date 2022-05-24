@@ -126,6 +126,7 @@ const Register = () => {
                                     {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                                 </label>
                             </div>
+                            {signInError}
                             <div className="form-control mt-6">
                                 <input className="btn btn-primary hover:btn-secondary" type="submit" value="Sign In" />
                             </div>
@@ -136,7 +137,7 @@ const Register = () => {
                         </div>
                     </form>
                     <div className="divider">OR</div>
-                    {signInError}
+
                     <div className="grid h-20 card rounded-box place-items-center">
                         <button onClick={handleGoogleLogin} className="btn btn-primary hover:btn-secondary">Google Login</button>
                     </div>
