@@ -17,7 +17,7 @@ const Purchase = () => {
     if (isLoading) {
         return <Loading></Loading>
     }
-    const { _id, name, image, description, price, available, minimumOrder } = tool;
+    const { _id, name, image, description, price, available } = tool;
 
 
     const handleBooking = event => {
@@ -29,7 +29,7 @@ const Purchase = () => {
             client: event.target.name.value,
             clientEmail: user.email,
             toolsName: name,
-            orderQuantity: quantity,
+            orderQuantity: event.target.quantity.value,
             toolsPrice: price,
             TotalPrice: (price * quantity),
             phone: event.target.phone.value,
@@ -65,12 +65,8 @@ const Purchase = () => {
                     <input type="email" value={user?.email} className="input input-bordered input-primary w-full max-w-xs" readOnly disabled />
                     <input type="number" name='phone' placeholder="Your phone" className="input input-bordered input-primary w-full max-w-xs" required />
                     <input type="text" name='address' placeholder="your address" className="input input-bordered input-primary w-full max-w-xs" required />
-                    <select name='quantity' className="select select-secondary w-full max-w-xs">
-                        {
-                            minimumOrder.map(quantity => <option value={quantity}>{quantity}</option>)
-                        }
-                    </select>
-                    <input type="submit" value="Purchase" className="input input-bordered w-full max-w-xs btn btn-primary hover:btn-secondary" />
+                    <input className="input input-bordered input-primary w-full max-w-xs" required type="number" name="quantity" min="1000" max={available} />
+                    <input type="submit" value="Book" className="input input-bordered w-full max-w-xs btn btn-primary hover:btn-secondary" />
                 </form>
             </div>
         </div>

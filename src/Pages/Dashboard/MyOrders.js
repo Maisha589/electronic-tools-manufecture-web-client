@@ -1,18 +1,34 @@
+import { signOut } from 'firebase/auth';
 import React, { useState, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const MyOrders = () => {
     const [user] = useAuthState(auth);
     const [orders, setOrders] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/booking?clientEmail=${user.email}`)
-            .then(res => res.json())
+        fetch(`http://localhost:5000/booking?clientEmail=${user.email}`, {
+            method: "GET",
+            headers: {
+                "authorization": `Bearer ${localStorage.getItem("accessToken")}`
+            }
+        })
+            .then(res => {
+                console.log(res, "res");
+                if (res.status === 401 || res.status === 403) {
+                    signOut(auth);
+                    localStorage.removeItem("accessToken");
+                    navigate("/")
+                }
+                return res.json()
+            })
             .then(data => setOrders(data))
 
-    }, [user])
+    }, [user, navigate])
 
 
     return (
@@ -24,8 +40,8 @@ const MyOrders = () => {
                         <th>Name</th>
                         <th>Tool</th>
                         <th>Quantity</th>
-                        <th>Price per tool</th>
-                        <th>TotalPrice</th>
+                        <th>Price per tool($)</th>
+                        <th>TotalPrice ($)</th>
                         <th>Make Payment</th>
                     </tr>
                 </thead>
@@ -33,7 +49,7 @@ const MyOrders = () => {
                     {
                         orders.map((order, index) => <tr>
                             <th>{index + 1}</th>
-                            <td className='font-bold'>{order.displayName}</td>
+                            <td className='font-bold'>{order.clientEmail}</td>
                             <td>{order.toolsName}</td>
                             <td>{order.orderQuantity}</td>
                             <td>{order.toolsPrice}</td>
