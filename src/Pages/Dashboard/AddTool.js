@@ -7,7 +7,7 @@ import Loading from '../Shared/Loading';
 const AddTool = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    const { data: tools, isLoading } = useQuery('tools', () => fetch('http://localhost:5000/tools').then(res => res.json()))
+    const { isLoading } = useQuery('tools', () => fetch('http://localhost:5000/tools').then(res => res.json()))
 
     const imageStorageKey = "2e0bc3df10acf4b40872b3ea07ac29f2";
 
@@ -42,7 +42,7 @@ const AddTool = () => {
                         .then(res => res.json())
                         .then(inserted => {
                             if (inserted.insertedId) {
-                                toast.success('Tools added successfully')
+                                toast.success('Tool added successfully')
                                 reset();
                             }
                             else {
