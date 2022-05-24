@@ -21,6 +21,7 @@ import RequireAdmin from './Pages/Login/RequireAdmin';
 import AddTool from './Pages/Dashboard/AddTool';
 import ManageTools from './Pages/Dashboard/ManageTools';
 import AllOrders from './Pages/Dashboard/AllOrders';
+import Payment from './Pages/Dashboard/Payment';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path='review' element={<Review></Review>}></Route>
 
           <Route path='myOrders' element={<MyOrders></MyOrders>}></Route>
+          <Route path='payment/:id' element={<Payment></Payment>}></Route>
           <Route path='addTool' element={<RequireAdmin><AddTool></AddTool></RequireAdmin>}></Route>
           <Route path="allUsers" element={<RequireAdmin><AllUsers></AllUsers></RequireAdmin>}></Route>
           <Route path='allBooking' element={<RequireAdmin><AllOrders></AllOrders></RequireAdmin>}></Route>

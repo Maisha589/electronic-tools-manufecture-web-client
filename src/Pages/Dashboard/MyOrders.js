@@ -1,7 +1,7 @@
 import { signOut } from 'firebase/auth';
 import React, { useState, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const MyOrders = () => {
@@ -18,7 +18,6 @@ const MyOrders = () => {
             }
         })
             .then(res => {
-                // console.log(res, "res");
                 if (res.status === 401 || res.status === 403) {
                     signOut(auth);
                     localStorage.removeItem("accessToken");
@@ -49,13 +48,18 @@ const MyOrders = () => {
                 <tbody>
                     {
                         orders.map((order, index) => <tr>
-                            <th>{index + 1}</th>
+                            <td>{index + 1}</td>
                             <td className='font-bold'>{order.clientEmail}</td>
                             <td>{order.toolsName}</td>
                             <td>{order.orderQuantity}</td>
                             <td>{order.toolsPrice}</td>
-                            <th>{order.TotalPrice}</th>
-                            <th><button className="btn btn-xs btn-primary">Pay</button></th>
+                            <td>{order.TotalPrice}</td>
+                            <td>
+                                {(order.toolsPrice && !order.paid) && <Link className="btn btn-primary btn-sm" to={`/dashboard/payment/${order._id}`}>Pay</Link>}
+                                {
+                                    (order.TotalPrice && order.paid) && <span>Paid</span>
+                                }
+                            </td>
                         </tr>)
                     }
                 </tbody>
