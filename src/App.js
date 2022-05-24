@@ -18,6 +18,8 @@ import Review from './Pages/Dashboard/Review';
 import MyProfile from './Pages/Dashboard/MyProfile';
 import AllUsers from './Pages/Dashboard/AllUsers';
 import RequireAdmin from './Pages/Login/RequireAdmin';
+import AllOrders from './Pages/Dashboard/AllOrders';
+import AddTool from './Pages/Dashboard/AddTool';
 
 function App() {
   return (
@@ -29,9 +31,11 @@ function App() {
         <Route path='blogs' element={<Blogs></Blogs>}></Route>
         <Route path='myPortfolio' element={<MyPortfolio></MyPortfolio>}></Route>
         <Route path='dashboard' element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}>
-          <Route index element={<MyOrders></MyOrders>}></Route>
+          <Route index element={<MyProfile></MyProfile>}></Route>
           <Route path='review' element={<Review></Review>}></Route>
-          <Route path='myProfile' element={<MyProfile></MyProfile>}></Route>
+
+          <Route path='myOrders' element={<MyOrders></MyOrders>}></Route>
+          <Route path='addTool' element={<RequireAdmin><AddTool></AddTool></RequireAdmin>}></Route>
           <Route path="allUsers" element={<RequireAdmin><AllUsers></AllUsers></RequireAdmin>}></Route>
         </Route>
         <Route path='login' element={<Login></Login>}></Route>
