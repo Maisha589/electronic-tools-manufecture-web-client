@@ -60,10 +60,10 @@ const AddTool = () => {
 
     return (
         <div>
-            <h2 className="text-2xl">Add a New Tool</h2>
+            <h2 className='text-2xl font-bold text-primary text-center mt-5 mb-5 '>Add a new Tool</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
 
-                <div className="form-control w-full max-w-xs">
+                <div className="form-control w-full max-w-xs ">
                     <label className="label">
                         <span className="label-text">Tool Name</span>
                     </label>
@@ -84,9 +84,6 @@ const AddTool = () => {
                 </div>
 
                 <div className="form-control w-full max-w-xs">
-                    <label className="label">
-                        <span className="label-text">description</span>
-                    </label>
                     <input
                         type="description"
                         placeholder="Tool description"
@@ -103,9 +100,6 @@ const AddTool = () => {
                     </label>
                 </div>
                 <div className="form-control w-full max-w-xs">
-                    <label className="label">
-                        <span className="label-text">Price</span>
-                    </label>
                     <input
                         type="price"
                         placeholder="Tool price"
@@ -122,12 +116,9 @@ const AddTool = () => {
                     </label>
                 </div>
                 <div className="form-control w-full max-w-xs">
-                    <label className="label">
-                        <span className="label-text">available</span>
-                    </label>
                     <input
                         type="available"
-                        placeholder="Tool available"
+                        placeholder="Available Tool"
                         className="input input-bordered w-full max-w-xs"
                         {...register("available", {
                             required: {
@@ -157,7 +148,7 @@ const AddTool = () => {
                     />
                 </div>
 
-                <input className='btn w-full max-w-xs text-white' type="submit" value="Add Tool" />
+                <input className='btn w-full max-w-xs text-white mt-5 mb-5' type="submit" value="Add Tool" />
             </form>
         </div>
     );

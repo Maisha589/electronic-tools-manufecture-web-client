@@ -28,6 +28,7 @@ const Dashboard = () => {
                     {
                         admin && <>
                             <li className='font-seibold text-accent'><Link to="/dashboard/allUsers">All Users</Link></li>
+                            <li className='font-seibold text-accent'><Link to="/dashboard/allBooking">All Booking</Link></li>
                             <li className='font-seibold text-accent'><Link to="/dashboard/manageTools">Manage Tools</Link></li>
                             <li className='font-seibold text-accent'><Link to="/dashboard/addTool">addTool</Link></li>
                         </>

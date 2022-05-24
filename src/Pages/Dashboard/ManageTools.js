@@ -37,11 +37,6 @@ const ManageTools = () => {
                     }
                 </tbody>
             </table>
-
-
-
-
-
         </div>
     );
 };

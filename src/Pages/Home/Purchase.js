@@ -17,7 +17,7 @@ const Purchase = () => {
     if (isLoading) {
         return <Loading></Loading>
     }
-    const { _id, name, image, description, price, available } = tool;
+    const { name, image, description, price, available } = tool;
 
 
     const handleBooking = event => {
@@ -25,7 +25,6 @@ const Purchase = () => {
         const quantity = event.target.quantity.value;
 
         const booking = {
-            toolKey: _id,
             client: event.target.name.value,
             clientEmail: user.email,
             toolsName: name,
