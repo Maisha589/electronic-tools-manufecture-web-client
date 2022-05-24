@@ -10,7 +10,7 @@ const Review = () => {
 
         const review = {
             name: data.name,
-            review: data.review,
+            comment: data.review,
             rating: data.rating
         }
         fetch("http://localhost:5000/review", {
