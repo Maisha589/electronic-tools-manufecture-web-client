@@ -1,5 +1,5 @@
 import React from 'react';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
@@ -10,6 +10,8 @@ const Register = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const navigate = useNavigate();
     const { register, formState: { errors }, handleSubmit } = useForm();
+
+    const [updateProfile, updating, updatingError] = useUpdateProfile(auth);
 
     const [
         createUserWithEmailAndPassword,
@@ -22,11 +24,13 @@ const Register = () => {
 
     let signInError;
 
-    if (gError || error) {
-        signInError = <p className='text-red-500'><small>{error?.message || gError?.message}</small></p>
+    if (gError || error || updatingError) {
+        signInError = <p className='text-red-500'><small>
+            {error?.message || gError?.message || updatingError?.message}
+        </small></p>
     }
 
-    if (gLoading || loading) {
+    if (gLoading || loading || updating) {
         return <Loading></Loading>
     }
 
@@ -35,10 +39,12 @@ const Register = () => {
 
     }
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         createUserWithEmailAndPassword(data.email, data.password, data.displayName);
+        await updateProfile({ displayName: data.name });
         console.log('update done');
         console.log(data)
+        navigate("/");
     }
 
     const handleGoogleLogin = () => {
@@ -50,7 +56,7 @@ const Register = () => {
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
                     <h1 className="text-5xl font-bold">Register Now</h1>
-                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <p className="py-6">Welcome to our <span>ELECTRONIC TOOL ZONE</span>. Here you will have your best manufactured tools used for electronic purpose in your company.</p>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <form onSubmit={handleSubmit(onSubmit)}>
