@@ -17,7 +17,7 @@ const Tools = () => {
     return (
         <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-3 p-5'>
             {
-                tools.map(tool => <Tool
+                tools.slice(-6).reverse().map(tool => <Tool
                     tool={tool}
                     key={tool._id}
                 ></Tool>)

@@ -1,7 +1,7 @@
 import React from 'react';
 
-const BookingRow = ({ booking, index }) => {
-    const { client, clientEmail, toolsName, orderQuantity, totalPrice, toolsPrice } = booking;
+const BookingRow = ({ booking, index, handleDelete }) => {
+    const { _id, client, clientEmail, toolsName, orderQuantity, totalPrice, toolsPrice, paid } = booking;
     return (
         <tr>
             <th>{index + 1}</th>
@@ -11,8 +11,14 @@ const BookingRow = ({ booking, index }) => {
             <td>{orderQuantity}</td>
             <td className='lg:block sm:hidden'>{toolsPrice}</td>
             <td>{totalPrice}</td>
-            <td><button className="btn btn-xs btn-primary">Deliver</button></td>
-            <td><button className="btn btn-xs btn-error">cancel</button></td>
+            <td>
+                {
+                    paid && <button className="btn btn-xs btn-primary">Deliver</button>
+                }
+                {
+                    !paid && <button onClick={() => handleDelete(_id)} className="btn btn-xs btn-error">cancel</button>
+                }
+            </td>
         </tr>
     );
 };

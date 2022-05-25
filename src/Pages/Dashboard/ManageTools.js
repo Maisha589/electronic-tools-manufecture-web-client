@@ -1,10 +1,11 @@
 import React from 'react';
 import { useQuery } from 'react-query';
+import { toast } from 'react-toastify';
 import Loading from '../Shared/Loading';
 import ToolRow from './ToolRow';
 
 const ManageTools = () => {
-    const { data: tools, isLoading } = useQuery("tools", () => fetch("http://localhost:5000/tools", {
+    const { data: tools, isLoading, refetch } = useQuery("tools", () => fetch("http://localhost:5000/tools", {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
@@ -14,6 +15,25 @@ const ManageTools = () => {
     if (isLoading) {
         return <Loading></Loading>
     }
+
+    const handleDelete = id => {
+        console.log(id);
+        const proceed = window.confirm("are you sure to delete?")
+        if (proceed) {
+            console.log("deleting tool with ", id)
+            const url = `http://localhost:5000/tools/${id}`
+            fetch(url, {
+                method: "DELETE"
+            }).then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        toast.success("deleted successfully!");
+                        refetch();
+                    }
+                })
+        }
+    }
+
     return (
         <div>
             <h2>Manage Tools</h2>
@@ -33,6 +53,7 @@ const ManageTools = () => {
                             key={tool._id}
                             tool={tool}
                             index={index}
+                            handleDelete={handleDelete}
                         ></ToolRow>)
                     }
                 </tbody>

@@ -15,7 +15,7 @@ const CheckOutForm = ({ tool }) => {
     const [clientSecret, setClientSecret] = useState('');
     const [processing, setProcessing] = useState(false);
 
-    const { _id, totalPrice, client, clientEmail } = tool;
+    const { _id, totalPrice } = tool;
 
     useEffect(() => {
         fetch("http://localhost:5000/create-payment-intent", {

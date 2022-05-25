@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuery } from 'react-query';
+import { toast } from 'react-toastify';
 import Loading from '../Shared/Loading';
 import UserRow from './UserRow';
 
@@ -15,6 +16,24 @@ const AllUsers = () => {
     if (isLoading) {
         return <Loading></Loading>
     }
+
+    const handleDelete = id => {
+        const proceed = window.confirm("are you sure to delete?")
+        if (proceed) {
+            console.log("deleting user with ", id)
+            const url = `http://localhost:5000/user/${id}`
+            fetch(url, {
+                method: "DELETE"
+            }).then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        toast.success("deleted successfully!");
+                        refetch();
+                    }
+                })
+        }
+    }
+
     return (
         <div className="overflow-x-auto">
             <h2 className='text-2xl font-bold text-primary text-center mt-5 mb-5 '>manage users</h2>
@@ -35,6 +54,7 @@ const AllUsers = () => {
                             index={index}
                             user={user}
                             refetch={refetch}
+                            handleDelete={handleDelete}
                         ></UserRow>)
                     }
                 </tbody>
