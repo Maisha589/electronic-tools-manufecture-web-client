@@ -30,7 +30,7 @@ const Purchase = () => {
             toolsName: name,
             orderQuantity: event.target.quantity.value,
             toolsPrice: price,
-            TotalPrice: (price * quantity),
+            totalPrice: (price * quantity),
             phone: event.target.phone.value,
             address: event.target.address.value
         }

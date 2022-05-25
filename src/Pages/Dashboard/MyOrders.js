@@ -1,8 +1,9 @@
 import { signOut } from 'firebase/auth';
 import React, { useState, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import MyOrderRow from './MyOrderRow';
 
 const MyOrders = () => {
     const [user] = useAuthState(auth);
@@ -29,7 +30,6 @@ const MyOrders = () => {
 
     }, [user, navigate])
 
-
     return (
         <div className="overflow-x-auto">
             <h2 className='text-2xl font-bold text-primary text-center mt-5 mb-5 '>My Orders</h2>
@@ -47,20 +47,11 @@ const MyOrders = () => {
                 </thead>
                 <tbody>
                     {
-                        orders.map((order, index) => <tr>
-                            <td>{index + 1}</td>
-                            <td className='font-bold'>{order.clientEmail}</td>
-                            <td>{order.toolsName}</td>
-                            <td>{order.orderQuantity}</td>
-                            <td>{order.toolsPrice}</td>
-                            <td>{order.TotalPrice}</td>
-                            <td>
-                                {(order.toolsPrice && !order.paid) && <Link className="btn btn-primary btn-sm" to={`/dashboard/payment/${order._id}`}>Pay</Link>}
-                                {
-                                    (order.TotalPrice && order.paid) && <span>Paid</span>
-                                }
-                            </td>
-                        </tr>)
+                        orders.map((order, index) => <MyOrderRow
+                            key={order._id}
+                            order={order}
+                            index={index}
+                        ></MyOrderRow>)
                     }
                 </tbody>
             </table>
