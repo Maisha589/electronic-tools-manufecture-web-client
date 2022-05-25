@@ -12,7 +12,7 @@ const MyOrders = () => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/booking/user?clientEmail=${user.email}`, {
+        fetch(`https://sheltered-garden-62351.herokuapp.com/booking/user?clientEmail=${user.email}`, {
             method: "GET",
             headers: {
                 "authorization": `Bearer ${localStorage.getItem("accessToken")}`

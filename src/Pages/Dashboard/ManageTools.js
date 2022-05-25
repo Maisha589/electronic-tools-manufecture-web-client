@@ -5,7 +5,7 @@ import Loading from '../Shared/Loading';
 import ToolRow from './ToolRow';
 
 const ManageTools = () => {
-    const { data: tools, isLoading, refetch } = useQuery("tools", () => fetch("http://localhost:5000/tools", {
+    const { data: tools, isLoading, refetch } = useQuery("tools", () => fetch("https://sheltered-garden-62351.herokuapp.com/tools", {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
@@ -21,7 +21,7 @@ const ManageTools = () => {
         const proceed = window.confirm("are you sure to delete?")
         if (proceed) {
             console.log("deleting tool with ", id)
-            const url = `http://localhost:5000/tools/${id}`
+            const url = `https://sheltered-garden-62351.herokuapp.com/tools/${id}`
             fetch(url, {
                 method: "DELETE"
             }).then(res => res.json())

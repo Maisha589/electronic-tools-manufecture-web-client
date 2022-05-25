@@ -10,7 +10,7 @@ const Purchase = () => {
     const { id } = useParams();
     const [user] = useAuthState(auth);
 
-    const url = `http://localhost:5000/purchase/${id}`;
+    const url = `https://sheltered-garden-62351.herokuapp.com/purchase/${id}`;
     const { data: tool, isLoading } = useQuery("purchase", () => fetch(url, {
         method: "GET",
     }).then(res => res.json()))
@@ -36,7 +36,7 @@ const Purchase = () => {
         }
 
 
-        fetch("http://localhost:5000/booking", {
+        fetch("https://sheltered-garden-62351.herokuapp.com/booking", {
             method: "POST",
             headers: {
                 "content-type": "application/json"

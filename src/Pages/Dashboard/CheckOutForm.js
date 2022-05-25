@@ -18,7 +18,7 @@ const CheckOutForm = ({ tool }) => {
     const { _id, totalPrice } = tool;
 
     useEffect(() => {
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://sheltered-garden-62351.herokuapp.com/create-payment-intent", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -82,7 +82,7 @@ const CheckOutForm = ({ tool }) => {
             tools: _id,
             transactionId: paymentIntent.id
         }
-        fetch(`http://localhost:5000/booking/${_id}`, {
+        fetch(`https://sheltered-garden-62351.herokuapp.com/booking/${_id}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json",

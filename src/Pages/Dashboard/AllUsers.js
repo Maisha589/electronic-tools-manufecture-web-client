@@ -6,7 +6,7 @@ import UserRow from './UserRow';
 
 const AllUsers = () => {
     const { data: users, isLoading, refetch } = useQuery("user", () =>
-        fetch("http://localhost:5000/user", {
+        fetch("https://sheltered-garden-62351.herokuapp.com/user", {
             method: "GET",
             headers: {
                 "authorization": `Bearer ${localStorage.getItem("accessToken")}`
@@ -21,7 +21,7 @@ const AllUsers = () => {
         const proceed = window.confirm("are you sure to delete?")
         if (proceed) {
             console.log("deleting user with ", id)
-            const url = `http://localhost:5000/user/${id}`
+            const url = `https://sheltered-garden-62351.herokuapp.com/user/${id}`
             fetch(url, {
                 method: "DELETE"
             }).then(res => res.json())

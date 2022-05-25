@@ -13,7 +13,7 @@ const Review = () => {
             comment: data.review,
             rating: data.rating
         }
-        fetch("http://localhost:5000/review", {
+        fetch("https://sheltered-garden-62351.herokuapp.com/review", {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

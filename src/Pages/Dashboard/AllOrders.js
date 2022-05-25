@@ -5,7 +5,7 @@ import Loading from '../Shared/Loading';
 import BookingRow from './BookingRow';
 
 const AllOrders = () => {
-    const { data: bookings, isLoading, refetch } = useQuery("booking", () => fetch("http://localhost:5000/booking", {
+    const { data: bookings, isLoading, refetch } = useQuery("booking", () => fetch("https://sheltered-garden-62351.herokuapp.com/booking", {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
@@ -17,12 +17,10 @@ const AllOrders = () => {
     }
 
     const handleDelete = id => {
-        console.log(id);
-        console.log(id);
         const proceed = window.confirm("are you sure to delete?")
         if (proceed) {
             console.log("deleting tool with ", id)
-            const url = `http://localhost:5000/booking/${id}`
+            const url = `https://sheltered-garden-62351.herokuapp.com/booking/${id}`
             fetch(url, {
                 method: "DELETE"
             }).then(res => res.json())
@@ -52,8 +50,9 @@ const AllOrders = () => {
                     </tr>
                 </thead>
                 <tbody>
+
                     {
-                        bookings.reverse().map((booking, index) => <BookingRow
+                        bookings.map((booking, index) => <BookingRow
                             key={booking._id}
                             index={index}
                             booking={booking}

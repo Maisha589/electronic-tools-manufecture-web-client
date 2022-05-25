@@ -12,7 +12,7 @@ const stripePromise = loadStripe("pk_test_51L1MONAr9zsAaSb0luXvkVJmUVehmjjSrO6QJ
 const Payment = () => {
     const { id } = useParams();
 
-    const url = `http://localhost:5000/booking/${id}`;
+    const url = `https://sheltered-garden-62351.herokuapp.com/booking/${id}`;
     console.log(url);
 
     const { data: tool, isLoading } = useQuery('booking', () => fetch(url, {

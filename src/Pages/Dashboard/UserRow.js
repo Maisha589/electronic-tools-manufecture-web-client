@@ -5,7 +5,7 @@ const UserRow = ({ user, index, refetch, handleDelete }) => {
     const { _id, email, role } = user;
 
     const handleMakeAdmin = () => {
-        fetch(`http://localhost:5000/user/admin/${email}`, {
+        fetch(`https://sheltered-garden-62351.herokuapp.com/user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

@@ -7,7 +7,7 @@ import Loading from '../Shared/Loading';
 const AddTool = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    const { isLoading } = useQuery('tools', () => fetch('http://localhost:5000/tools').then(res => res.json()))
+    const { isLoading } = useQuery('tools', () => fetch('https://sheltered-garden-62351.herokuapp.com/tools').then(res => res.json()))
 
     const imageStorageKey = "2e0bc3df10acf4b40872b3ea07ac29f2";
 
@@ -31,7 +31,7 @@ const AddTool = () => {
                         price: data.price,
                         available: data.available
                     }
-                    fetch('http://localhost:5000/tools', {
+                    fetch('https://sheltered-garden-62351.herokuapp.com/tools', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

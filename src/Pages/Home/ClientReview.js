@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 import ReviewCard from './ReviewCard';
 
 const ClientReview = () => {
-    const { data: reviews, isLoading } = useQuery("review", () => fetch("http://localhost:5000/review", {
+    const { data: reviews, isLoading } = useQuery("review", () => fetch("https://sheltered-garden-62351.herokuapp.com/review", {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }

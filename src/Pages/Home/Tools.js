@@ -6,7 +6,7 @@ const Tools = () => {
 
 
     useEffect(() => {
-        const url = "http://localhost:5000/tools";
+        const url = "https://sheltered-garden-62351.herokuapp.com/tools";
         fetch(url, {
             method: "GET"
         })
