@@ -11,7 +11,7 @@ const Register = () => {
     const navigate = useNavigate();
     const { register, formState: { errors }, handleSubmit } = useForm();
 
-    const [updateProfile, updating, updatingError] = useUpdateProfile(auth);
+    const [updateProfile, updating] = useUpdateProfile(auth);
 
     const [
         createUserWithEmailAndPassword,
