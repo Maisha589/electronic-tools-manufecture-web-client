@@ -15,9 +15,9 @@ const ClientReview = () => {
         return <Loading></Loading>
     }
     return (
-        <div>
-            <h2 className='text-2xl font-bold text-primary text-center mt-5 mb-5 '>Customer Review</h2>
-            <div className="grid lg:grid-cols-3 sm:grid-cols-2">
+        <div className='p-5 mb-5 mt-5 '>
+            <h2 className='text-2xl font-bold text-primary text-center mt-5 mb-10 p-5'>Customer Review</h2>
+            <div style={{ backgroundImage: "url(https://i.ibb.co/dMHJyxX/21018.jpg)", backgroundSize: "cover" }} className="grid lg:grid-cols-3 sm:grid-cols-2">
                 {
                     reviews.slice(-3).reverse().map(review => <ReviewCard
                         key={review._id}

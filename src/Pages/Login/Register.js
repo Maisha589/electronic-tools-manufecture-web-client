@@ -24,9 +24,9 @@ const Register = () => {
 
     let signInError;
 
-    if (gError || error || updatingError) {
+    if (gError || error) {
         signInError = <p className='text-red-500'><small>
-            {error?.message || gError?.message || updatingError?.message}
+            {error?.message || gError?.message}
         </small></p>
     }
 
