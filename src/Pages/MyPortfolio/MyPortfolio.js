@@ -4,10 +4,10 @@ const MyPortfolio = () => {
     return (
         <div style={{ backgroundImage: "url(https://i.ibb.co/MgQ5b4J/rm183-wan-01b.jpg)", backgroundSize: "cover" }}>
             <h2>This is my portfolio</h2>
-            <div class="card w-96 glass">
+            <div className="card w-96 glass">
                 <figure><img src="https://i.ibb.co/F6wf38g/IMG-20220512-162350.jpg" alt="car!" /></figure>
-                <div class="card-body">
-                    <h2 class="card-title text-secondary">This is me!</h2>
+                <div className="card-body">
+                    <h2 className="card-title text-secondary">This is me!</h2>
                     <p className='text-2xl font-bold text-white'>Maisha Rahman</p>
                     <p className=' text-white font-semibol '>I am a web Developer!</p>
                     <p className=' text-white font-semibol '>I have passed my HSC...Loading </p>

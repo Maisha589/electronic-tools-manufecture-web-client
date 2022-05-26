@@ -60,8 +60,7 @@ const Purchase = () => {
                 <p className='font-semibold text-primary'>Available Tools: <span className='font-bolder'>{available}</span></p>
 
                 <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3 justify-center'>
-                    {/* <input type="text" name='name' placeholder="your Name" className="input input-bordered input-primary w-full max-w-xs" required /> */}
-                    <input type="text" value={user?.displayName} className="input-bordered input-primary w-full max-w-xs" readOnly disabled />
+                    <input type="text" name='name' placeholder="your Name" className="input input-bordered input-primary w-full max-w-xs" required />
                     <input type="email" value={user?.email} className="input input-bordered input-primary w-full max-w-xs" readOnly disabled />
                     <input type="number" name='phone' placeholder="Your phone" className="input input-bordered input-primary w-full max-w-xs" required />
                     <input type="text" name='address' placeholder="your address" className="input input-bordered input-primary w-full max-w-xs" required />

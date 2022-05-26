@@ -21,7 +21,8 @@ const Login = () => {
     let loginError;
     const navigate = useNavigate();
     const location = useLocation();
-    let from = location.state?.from?.pathname || "/";
+    let from = location?.state?.from?.pathname || "/";
+
     useEffect(() => {
         if (token) {
             navigate(from, { replace: true });
@@ -35,7 +36,6 @@ const Login = () => {
     if (gLoading || loading) {
         return <Loading></Loading>
     }
-
 
 
     const onSubmit = data => {
